@@ -1,13 +1,26 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { off } from 'process';
+import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        const onScroll = () => setOffset(window.scrollY);
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    console.log(offset); 
   
     const handleNav = () => {
       setIsNavOpen(!isNavOpen);
     };
+
   
     const navItems = [
       { id: 1, link: "home",  },
@@ -20,8 +33,8 @@ export const Navbar = () => {
     return (
         <nav className={
                 isNavOpen
-                ? 'duration-500 bg-white shadow-xl translate-x-14 translate-y-6 rounded-xl rounded-b-none w-4/5 text-black p-4 sm:p-6 md:flex md:justify-between md:items-center'
-                : 'duration-500 bg-white shadow-xl translate-x-14 translate-y-6 rounded-xl w-4/5 text-black p-4 sm:p-6 md:flex md:justify-between md:items-center'
+                ? `fixed duration-500 bg-white shadow-xl ${offset>0 ? 'w-full translate-x-0 translate-y-0' : 'w-4/5 translate-x-14 translate-y-6 rounded-xl rounded-b-none'}  text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
+                : `fixed duration-500 bg-white shadow-xl ${offset>0 ? 'w-full translate-x-0 translate-y-0' : 'w-4/5 translate-x-14 translate-y-6 rounded-xl'} text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
               }>
             <div className='container mx-auto flex justify-between items-center'>
 
