@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { off } from 'process';
 import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
@@ -31,9 +30,10 @@ export const Navbar = () => {
     return (
         <nav className={
                 isNavOpen
-                ? `fixed duration-500 bg-white shadow-xl ${offset>0 ? 'w-full translate-x-0 translate-y-0' : 'w-4/5 translate-x-14 translate-y-6 rounded-xl rounded-b-none'}  text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
-                : `fixed duration-500 bg-white shadow-xl ${offset>0 ? 'w-full translate-x-0 translate-y-0' : 'w-4/5 translate-x-14 translate-y-6 rounded-xl'} text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
+                ? `fixed bg-white shadow-xl ${offset>0 ? 'w-full -translate-x-0 translate-y-0 left-0' : 'w-4/5 -translate-x-1/2 left-1/2 translate-y-6 rounded-xl rounded-b-none'}  text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
+                : `fixed bg-white shadow-xl ${offset>0 ? 'w-full -translate-x-0 translate-y-0 left-0' : 'w-4/5 -translate-x-1/2 left-1/2 translate-y-6 rounded-xl'} text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
               }>
+
             <div className='container mx-auto flex justify-between items-center'>
 
                 <a className='text-2xl font-bold' href=""> Logo</a>
