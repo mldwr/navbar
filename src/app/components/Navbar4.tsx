@@ -30,8 +30,8 @@ export const Navbar = () => {
     return (
         <nav className={
                 isNavOpen
-                ? `fixed bg-white shadow-xl ${offset>0 ? 'w-full -translate-x-0 translate-y-0 left-0' : 'w-4/5 -translate-x-1/2 left-1/2 translate-y-6 rounded-xl rounded-b-none'}  text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
-                : `fixed bg-white shadow-xl ${offset>0 ? 'w-full -translate-x-0 translate-y-0 left-0' : 'w-4/5 -translate-x-1/2 left-1/2 translate-y-6 rounded-xl'} text-black p-4 sm:p-6 md:flex md:justify-between md:items-center`
+                ? `duration-500 fixed bg-white shadow-xl ${offset>50 ? 'w-full top-0 p-2 sm:p-3' : 'w-[94%] translate-y-6 rounded-xl p-4 sm:p-6 xs:rounded-b-none'}  text-black md:flex md:justify-between md:items-center`
+                : `duration-500 fixed bg-white shadow-xl ${offset>50 ? 'w-full top-0 p-2 sm:p-3' : 'w-[94%] translate-y-6 rounded-xl p-4 sm:p-6'} text-black md:flex md:justify-between md:items-center`
               }>
 
             <div className='container mx-auto flex justify-between items-center'>
@@ -66,10 +66,11 @@ export const Navbar = () => {
                     </div>
                 )} */}
 
+                {/* shadow effect, when mobile menu is open */}
                 <div className={
                     isNavOpen
-                    ? 'duration-500 z-50 shadow-xl absolute top-[80px] bg-white w-full p-2 left-0'
-                    : 'duration-500 opacity-0 z-50 rounded-xl shadow-xl absolute top-[80px] bg-white w-full p-2 left-0'
+                    ? 'duration-500 md:opacity-0 z-10 shadow-xl absolute top-[80px] bg-white w-full p-2 left-0'
+                    : 'duration-500 opacity-0 z-10 rounded-xl shadow-xl absolute top-[80px] bg-white w-full p-2 left-0'
                 }></div>
                 
                 <div className={
@@ -110,7 +111,7 @@ export const Navbar = () => {
 
 
                 {/* Mobile Navigation Icon   */}
-                <div className='md:hidden flex items-center'>
+                <div className='md:hidden flex items-center z-50'>
                     <button
                         onClick={handleNav}
                         className={`w-14 h-14 mx-auto bg-green-900 rounded-md flex justify-center items-center relative transform transition-transform duration-500 delay-300
